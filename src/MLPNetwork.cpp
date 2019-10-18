@@ -99,7 +99,13 @@ void MLPNetwork::output() {
         }
         Serial.print(F("},"));
     }
-    Serial.println(F("}"));
+    Serial.println(F("};"));
+    
+    Serial.println(F("std::vector<float> biases{"));
+    for (auto &layer: layers) {
+        Serial.print(layer.current_bias, 7); Serial.println(F(","));
+    }
+    Serial.println(F("};"))
 }
 
 void MLPNetwork::feed_propagate(std::vector<float> _input) {
